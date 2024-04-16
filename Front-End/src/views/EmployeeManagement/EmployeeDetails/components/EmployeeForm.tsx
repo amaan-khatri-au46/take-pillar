@@ -56,6 +56,7 @@ const EmployeeForm = () => {
           const res = editRow._id
             ? await dispatch(editEmployee({ id: editRow?._id, data: values }))
             : await dispatch(createEmployee(values));
+          console.log(res, "Here We Get The Actual response");
           await dispatch(
             fetchEmployee({
               pageIndex: pagination?.pageIndex,

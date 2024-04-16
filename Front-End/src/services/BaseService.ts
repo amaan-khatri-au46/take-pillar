@@ -26,7 +26,8 @@ BaseService.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response) {
-      return Promise.reject(error.response.data); 
+      console.log(error, "From Inside")
+      return Promise.reject(error); 
     } else {
       return Promise.reject(error); 
     }

@@ -7,8 +7,12 @@ const createEmployee = async (req, res) => {
     await employee.save();
     res.status(201).json(employee);
   } catch (error) {
-    console.error("Error creating employee:", error);
-    res.status(500).json({ error: "Failed to create employee" });
+    if (error.code === 11000 && error.keyPattern && error.keyPattern.email) {
+      res.status(400).json({ error: "Email already exists" });
+    } else {
+      console.error("Error creating employee:", error);
+      res.status(500).json({ error: "Failed to create employee" });
+    }
   }
 };
 

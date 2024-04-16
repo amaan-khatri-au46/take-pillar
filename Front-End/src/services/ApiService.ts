@@ -12,6 +12,7 @@ const ApiService = {
                     resolve(response)
                 })
                 .catch((errors: AxiosError) => {
+                    console.log(errors, 'From Outside')
                     reject(errors)
                 })
         })

@@ -15,6 +15,7 @@ export const fetchEmployee = createAsyncThunk(
       const response = await apiGetEmployee({ pageIndex, pageSize });
       return response?.data;
     } catch (error) {
+      console.log(error, "From Function")
       throw error;
     }
   }
@@ -26,8 +27,8 @@ export const createEmployee = createAsyncThunk(
     try {
       const response = await apiCreateEmployee(data);
       return response?.data;
-    } catch (error) {
-      throw error;
+    } catch (error:any) {
+      return error.response.data
     }
   }
 );
